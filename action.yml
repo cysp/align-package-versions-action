@@ -1,0 +1,6 @@
+name: "Align NPM package versions"
+description: "Aligns the versions of related packages within a workspace"
+author: "cysp"
+runs:
+  using: "node16"
+  main: "dist/index.js"
