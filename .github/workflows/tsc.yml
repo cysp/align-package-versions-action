@@ -12,6 +12,7 @@ jobs:
 
     permissions:
       contents: read
+      packages: read
       security-events: write
 
     steps:
@@ -20,9 +21,12 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+          registry-url: 'https://npm.pkg.github.com'
           cache: 'npm'
 
       - run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Type check
         run: npx --no-install tsc --noEmit
